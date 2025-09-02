@@ -1,0 +1,41 @@
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './Home.css';
+
+const Home = ({ teamCount }) => {
+  const navigate = useNavigate();
+
+  // Auto-redirect if registration is full
+  useEffect(() => {
+    if (teamCount >= 40) {
+      navigate('/closed', { replace: true });
+    }
+  }, [teamCount, navigate]);
+
+  const goToRegister = () => {
+    navigate('/register');
+  };
+
+  return (
+    <div className="home-bg">
+      <div className="home-overlay" />
+      <div className="home-content">
+        <img src="/title.png" alt="Hack Heist" />
+        <h1 className="home-title">Welcome to Hack Heist</h1>
+        <p className="home-sub">Plan your team, heist the challenge, and win!</p>
+        <button
+          onClick={goToRegister}
+          className="home-btn"
+          disabled={teamCount >= 40}
+        >
+          {teamCount >= 40 ? "Registration Full" : "Go to Registration"}
+        </button>
+      </div>
+      <footer className="home-footer">
+        <span>“No plan survives first contact—except a solid registration.”</span>
+      </footer>
+    </div>
+  );
+};
+
+export default Home;

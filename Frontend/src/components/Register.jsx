@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Register.css";
 
-const api = "https://register-nine-nu.vercel.app";
+const api = "https://gfg-hack-heist-2025-83qq.vercel.app/";
 
 const emptyMember = () => ({
   name: "",
